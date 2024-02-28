@@ -5,7 +5,7 @@
 @section('content')
     <h1>EDIT PROJECT</h1>
 
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
 
         @csrf
         @method("PUT")
@@ -46,6 +46,14 @@
                 </label>
             </div>
         @endforeach
+        @if ($project -> image)
+            <img src="{{ asset('storage/' . $project -> image) }}" width="100px">
+            <br>
+        @endif
+        <br>
+        <label for="image">Image</label>
+        <input type="file" name="image" id="image" accept="image/*">
+        <br>
         <input type="submit" value="UPDATE">
 
     </form>
